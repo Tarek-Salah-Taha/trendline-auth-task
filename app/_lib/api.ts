@@ -1,6 +1,4 @@
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  "https://tinytales.trendline.marketing/api";
+const BASE_URL = "https://tinytales.trendline.marketing/api";
 
 // Helper for handling fetch requests
 async function request(url: string, options: RequestInit = {}, token?: string) {

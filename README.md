@@ -28,6 +28,6 @@ This project demonstrates modern frontend development practices including form v
 
 ---
 
-## 🚀 Notes for reviewer
+## Notes for reviewer
 
 There were some difference between web and mobile Figma pages such as in Rating & Reviews and Footer section and we followed web version.

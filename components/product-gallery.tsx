@@ -26,7 +26,7 @@ export function ProductGallery() {
         <img
           src={images[currentImage]}
           alt="Product image"
-          className="w-full h-[450px] object-cover"
+          className="w-full h-[488px] object-cover"
         />
 
         {/* Modern slider bars (top, full width) */}

@@ -51,9 +51,9 @@ export function RatingReviews() {
         <span className="absolute left-0 -bottom-1 h-1 w-12 bg-chart-2 rounded"></span>
       </h5>
 
-      <div className="flex flex-col md:flex-row md:items-start md:justify-start gap-16">
-        {/* Left: Average rating + breakdown */}
-        <div className="flex flex-col md:flex-row md:items-start gap-12 flex-1">
+      <div className="flex flex-col md:grid md:grid-cols-12 md:gap-8 gap-20">
+        {/* Left: Average rating + breakdown - Takes up 8 columns */}
+        <div className="flex flex-col md:flex-row md:items-start gap-12 md:col-span-8">
           {/* Average rating */}
           <div className="flex items-end gap-2 justify-center md:justify-start">
             <div className="md:text-9xl text-8xl font-medium text-black">
@@ -91,13 +91,15 @@ export function RatingReviews() {
           </div>
         </div>
 
-        {/* Right: Total Reviews */}
-        <div className="flex flex-col items-center gap-2 flex-shrink-0">
-          <div className="text-muted-foreground text-base">Total Reviews</div>
-          <div className="md:text-6xl text-5xl font-semibold text-foreground">
+        {/* Right: Total Reviews - Takes up 4 columns */}
+        <div className="flex flex-col items-center flex-shrink-0 md:col-span-4">
+          <div className="text-muted-foreground text-base mb-4">
+            Total Reviews
+          </div>
+          <div className="md:text-6xl text-5xl font-semibold text-foreground mb-6">
             3.0K
           </div>
-          <Button className="w-full bg-[#be968e] hover:bg-[#a08268] text-white px-4 py-2 rounded-lg h-14 flex items-center justify-center gap-2">
+          <Button className="w-full md:w-auto md:min-w-32 bg-[#be968e] hover:bg-[#a08268] text-white px-4 py-2 rounded-lg h-14 flex items-center justify-center gap-2">
             Add Comment
             <Image
               src="/comment.svg"

@@ -56,7 +56,9 @@ export function RatingReviews() {
         <div className="flex flex-col md:flex-row md:items-start gap-12 flex-1">
           {/* Average rating */}
           <div className="flex items-end gap-2 justify-center md:justify-start">
-            <div className="text-9xl font-medium text-black">4,5</div>
+            <div className="md:text-9xl text-8xl font-medium text-black">
+              4,5
+            </div>
             <div className="text-2xl font-medium text-[#B0B0B0] mb-2">/5</div>
           </div>
 
@@ -95,7 +97,7 @@ export function RatingReviews() {
           <div className="md:text-6xl text-5xl font-semibold text-foreground">
             3.0K
           </div>
-          <Button className="w-full min-w-[160px] max-w-[250px] bg-[#be968e] hover:bg-[#a08268] text-white px-4 py-2 rounded-lg h-14 flex items-center justify-center gap-2">
+          <Button className="w-full bg-[#be968e] hover:bg-[#a08268] text-white px-4 py-2 rounded-lg h-14 flex items-center justify-center gap-2">
             Add Comment
             <Image
               src="/comment.svg"

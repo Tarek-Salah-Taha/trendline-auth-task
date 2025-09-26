@@ -1,11 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --background: #fefefe;
   --foreground: #333333;
+  --black: #020202;
   --card: #ffffff;
   --card-foreground: #333333;
   --popover: #ffffff;
@@ -39,43 +38,7 @@
   --sidebar-ring: #05613a;
 }
 
-.dark {
-  --background: #28303f;
-  --foreground: #ffffff;
-  --card: #404040;
-  --card-foreground: #ffffff;
-  --popover: #404040;
-  --popover-foreground: #ffffff;
-  --primary: #89ada1;
-  --primary-foreground: #000000;
-  --secondary: #454545;
-  --secondary-foreground: #ffffff;
-  --muted: #454545;
-  --muted-foreground: #b0b0b0;
-  --accent: #89ada1;
-  --accent-foreground: #000000;
-  --destructive: #d90202;
-  --destructive-foreground: #ffffff;
-  --border: #545454;
-  --input: #545454;
-  --ring: #89ada1;
-  --chart-1: #7198c8;
-  --chart-2: #be968e;
-  --chart-3: #e2b78c;
-  --chart-4: #a08268;
-  --chart-5: #b8ccda;
-  --sidebar: #28303f;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #89ada1;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #454545;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #545454;
-  --sidebar-ring: #89ada1;
-}
-
 @theme inline {
-  --font-sans: var(--font-poppins);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

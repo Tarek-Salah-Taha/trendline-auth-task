@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/product-card";
+import { ProductCard } from "@/components/ProductCard";
 
 export function SimilarItems() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
 
   const products = [
     {
@@ -16,12 +17,9 @@ export function SimilarItems() {
       rating: 4.5,
       reviewCount: 2910,
       currentPrice: "AED 900",
-      originalPrice: "AED 1000",
-      discountPercentage: "25% OFF",
       image: "/black-dress.png",
-      colors: ["beige", "black", "white"],
+      colors: ["beige", "black", "gray"],
       additionalColorsCount: 2,
-      isLocked: true,
     },
     {
       id: 2,
@@ -30,10 +28,11 @@ export function SimilarItems() {
       rating: 4.2,
       reviewCount: 1850,
       currentPrice: "AED 900",
-      originalPrice: "AED 1000",
+      originalPrice: "AED 1300",
       image: "/white-bergamot.png",
-      colors: ["white", "black"],
+      colors: ["beige", "black", "gray"],
       additionalColorsCount: 1,
+      discountPercentage: "25% OFF",
     },
     {
       id: 3,
@@ -42,10 +41,9 @@ export function SimilarItems() {
       rating: 4.7,
       reviewCount: 3200,
       currentPrice: "AED 900",
-      originalPrice: "AED 1000",
-      discountPercentage: "SALE",
+      discountPercentage: "25% OFF",
       image: "/brown-bergamot.png",
-      colors: ["brown", "black"],
+      colors: ["beige", "black", "gray"],
       additionalColorsCount: 2,
     },
     {
@@ -55,9 +53,9 @@ export function SimilarItems() {
       rating: 4.3,
       reviewCount: 1650,
       currentPrice: "AED 900",
-      originalPrice: "AED 1000",
+      originalPrice: "AED 1300",
       image: "/bergamot.png",
-      colors: ["blue", "gray"],
+      colors: ["beige", "black", "gray"],
       additionalColorsCount: 1,
     },
     {
@@ -67,20 +65,49 @@ export function SimilarItems() {
       rating: 4.6,
       reviewCount: 2100,
       currentPrice: "AED 900",
-      originalPrice: "AED 1000",
+      originalPrice: "AED 1300",
       image: "/bergamot.png",
-      colors: ["black", "gray"],
+      colors: ["beige", "black", "gray"],
       additionalColorsCount: 2,
     },
   ];
 
-  const itemsPerPage = 4;
+  // Update items per page based on screen size
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(2); // Mobile: 2 cards side by side
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(3); // Tablet: 3 cards
+      } else {
+        setItemsPerPage(4); // Desktop: 4 cards
+      }
+      setCurrentSlide(0); // Reset to first slide when changing view
+    };
+
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
+
   const maxSlide = Math.ceil(products.length / itemsPerPage) - 1;
 
+  // Navigation functions with infinite loop
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev <= 0 ? maxSlide : prev - 1));
+  };
+
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    <section className="max-w-7xl mx-auto p-4">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-[#333333]">Similar Items</h2>
+        <h5 className="relative inline-block md:text-2xl text-lg font-bold text-black mb-2">
+          Similar Items
+          <span className="absolute left-0 -bottom-1 h-1 w-12 bg-chart-2 rounded"></span>
+        </h5>
       </div>
 
       <div className="overflow-hidden">
@@ -92,7 +119,15 @@ export function SimilarItems() {
             length: Math.ceil(products.length / itemsPerPage),
           }).map((_, slideIndex) => (
             <div key={slideIndex} className="w-full flex-shrink-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div
+                className={`grid gap-4 md:gap-6 ${
+                  itemsPerPage === 2
+                    ? "grid-cols-2"
+                    : itemsPerPage === 3
+                    ? "grid-cols-3"
+                    : "grid-cols-4"
+                }`}
+              >
                 {products
                   .slice(
                     slideIndex * itemsPerPage,
@@ -112,7 +147,6 @@ export function SimilarItems() {
                       image={product.image}
                       colors={product.colors}
                       additionalColorsCount={product.additionalColorsCount}
-                      isLocked={product.isLocked}
                     />
                   ))}
               </div>
@@ -124,20 +158,16 @@ export function SimilarItems() {
       {/* Navigation buttons at bottom center */}
       <div className="flex justify-center gap-2 mt-8">
         <Button
-          variant="outline"
           size="icon"
-          onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-          disabled={currentSlide === 0}
-          className="h-10 w-10 rounded-full"
+          onClick={goToPrevSlide}
+          className="h-10 w-10 rounded-full bg-[#E8EDF2] text-black hover:bg-gray-300"
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <Button
-          variant="outline"
           size="icon"
-          onClick={() => setCurrentSlide(Math.min(maxSlide, currentSlide + 1))}
-          disabled={currentSlide === maxSlide}
-          className="h-10 w-10 rounded-full bg-[#be968e] text-white border-[#be968e] hover:bg-[#a08268]"
+          onClick={goToNextSlide}
+          className="h-10 w-10 rounded-full bg-chart-2 text-white border-chart-2 hover:bg-opacity-80"
         >
           <ChevronRight className="h-4 w-4" />
         </Button>

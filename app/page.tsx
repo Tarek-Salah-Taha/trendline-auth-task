@@ -1,15 +1,15 @@
-import { Header } from "@/components/header";
-import { HeroSection } from "@/components/hero-section";
-import { Breadcrumb } from "@/components/breadcrumb";
-import { ProductGallery } from "@/components/product-gallery";
-import { ProductDetails } from "@/components/product-details";
-import { RatingReviews } from "@/components/rating-reviews";
-import { SimilarItems } from "@/components/similar-items";
-import { Footer } from "@/components/footer";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/HeroSection";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { ProductGallery } from "@/components/ProductGallery";
+import { ProductDetails } from "@/components/ProductDetails";
+import { RatingReviews } from "@/components/RatingReviews";
+import { SimilarItems } from "@/components/SimilarItems";
+import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#fefefe]">
+    <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
       <Breadcrumb />

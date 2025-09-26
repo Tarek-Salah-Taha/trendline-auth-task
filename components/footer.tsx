@@ -13,86 +13,88 @@ export function Footer() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-[#020202B2] bg-opacity-70"></div>
 
       <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
-        <div className="grid md:grid-cols-4 gap-8 items-start">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-20 items-start">
           {/* Company Info */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 -mt-4 mb-4">
               <Image
                 src="/footer.svg"
                 alt="Tinytales Logo"
-                width={40}
-                height={40}
+                width={64}
+                height={64}
                 className="object-contain"
               />
             </div>
-            <div className="flex-1">
-              <p className="text-[#b0b0b0] text-sm leading-relaxed mb-4">
-                Ipsam in eos qui consequatur ab cum maxime.Soluta dolor quae
-                Ipsam in eos qui consequatur ab. Soluta dolor quae Ipsam in eos
-                quconsequatur ab cum maxime.Soluta dolor quae
-              </p>
-            </div>
+            <p className="text-[#b0b0b0] text-sm font-medium leading-relaxed">
+              Ipsam in eos qui consequatur ab cum maxime. Soluta dolor quae
+              Ipsam in eos qui consequatur ab. Soluta dolor quae Ipsam in eos
+              qui consequatur ab cum maxime. Soluta dolor quae.
+            </p>
           </div>
 
-          {/* Let Us Help */}
-          <div className="flex flex-col">
-            <h3 className="font-semibold mb-4 min-h-[1.5rem]">Let Us Help</h3>
-            <div className="flex-1">
-              <ul className="space-y-2 text-sm text-[#b0b0b0]">
+          {/* Let Us Help + Policies */}
+          <div className="grid grid-cols-2 gap-8">
+            {/* Let Us Help */}
+            <div className="flex flex-col">
+              <h5 className="font-semibold md:text-2xl text-lg mb-4">
+                Let Us Help
+              </h5>
+              <ul className="space-y-2 text-base font-medium text-[#b0b0b0]">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Your Account
+                  <a href="#" className="hover:text-white">
+                    My Account
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     FAQs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     Categories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     All Products
                   </a>
                 </li>
               </ul>
             </div>
-          </div>
 
-          {/* Policies */}
-          <div className="flex flex-col">
-            <h3 className="font-semibold mb-4 min-h-[1.5rem]">Policies</h3>
-            <div className="flex-1">
-              <ul className="space-y-2 text-sm text-[#b0b0b0]">
+            {/* Policies */}
+            <div className="flex flex-col">
+              <h5 className="font-semibold md:text-2xl text-lg mb-4">
+                Policies
+              </h5>
+              <ul className="space-y-2 text-base font-medium text-[#b0b0b0]">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     Refund policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     Cancellation Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     Terms and Conditions
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#" className="hover:text-white">
                     Privacy Policy
                   </a>
                 </li>
@@ -102,99 +104,47 @@ export function Footer() {
 
           {/* Send Email */}
           <div className="flex flex-col">
-            <h3 className="font-semibold mb-4 min-h-[1.5rem]">Send Email</h3>
+            <h5 className="font-semibold md:text-2xl text-lg mb-5">
+              Send Email
+            </h5>
             <div className="flex-1">
-              <div className="flex gap-2 mb-4">
+              <div className="flex items-center gap-2 bg-white rounded-lg p-2 mb-6">
                 <Input
                   placeholder="Email address"
-                  className="bg-[#454545] border-[#545454] text-white placeholder:text-[#b0b0b0]"
+                  className="flex-1 border-none shadow-none text-black placeholder:text-gray-500 focus-visible:ring-0"
                 />
-                <Button className="bg-[#be968e] hover:bg-[#a08268] px-3">
+                <Button className="bg-chart-2 hover:bg-[#a08268] text-white px-6 rounded-md">
                   Send
                 </Button>
               </div>
-              <div>
-                <p className="text-sm text-[#b0b0b0] mb-3">Follow Us</p>
-                <div className="flex gap-3">
+
+              <h5 className="font-semibold md:text-2xl text-lg mb-5">
+                Follow Us
+              </h5>
+              <div className="flex">
+                {[
+                  "facebook",
+                  "twitter",
+                  "instagram",
+                  "linkedin",
+                  "whatsapp",
+                  "telegram",
+                ].map((social) => (
                   <Button
+                    key={social}
                     variant="ghost"
                     size="icon"
                     className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
                   >
                     <Image
-                      src="/footer/facebook.svg"
-                      alt="Facebook"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
+                      src={`/footer/${social}.svg`}
+                      alt={social}
+                      width={24}
+                      height={24}
+                      className="w-5 h-5"
                     />
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
-                  >
-                    <Image
-                      src="/footer/twitter.svg"
-                      alt="Twitter"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
-                  >
-                    <Image
-                      src="/footer/instagram.svg"
-                      alt="Instagram"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
-                  >
-                    <Image
-                      src="/footer/linkedin.svg"
-                      alt="LinkedIn"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
-                  >
-                    <Image
-                      src="/footer/whatsapp.svg"
-                      alt="Whatsapp"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-[#b0b0b0] hover:text-white hover:bg-[#454545]"
-                  >
-                    <Image
-                      src="/footer/telegram.svg"
-                      alt="Telegram"
-                      width={16}
-                      height={16}
-                      className="w-4 h-4"
-                    />
-                  </Button>
-                </div>
+                ))}
               </div>
             </div>
           </div>

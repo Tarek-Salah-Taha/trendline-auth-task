@@ -23,9 +23,6 @@ async function request(url: string, options: RequestInit = {}, token?: string) {
   return res.json();
 }
 
-// === AUTH APIs ===
-
-// Register
 export const register = (data: {
   name: string;
   email: string;
@@ -45,7 +42,6 @@ export const register = (data: {
   });
 };
 
-// Login
 export const login = (data: { email: string; password: string }) => {
   const formData = new FormData();
   Object.entries(data).forEach(([key, value]) =>
@@ -72,7 +68,8 @@ export const verifyAccount = (token: string, code: string) => {
   );
 };
 
-// Resend Code
+//* Functions below for future use cases
+
 export const resendCode = (token: string) => {
   return request(
     "/auth/verify-email/resend-code",
@@ -84,12 +81,10 @@ export const resendCode = (token: string) => {
   );
 };
 
-// User Data
 export const getUserData = (token: string) => {
   return request("/auth/user-data", { method: "GET" }, token);
 };
 
-// Logout
 export const logout = (token: string) => {
   return request(
     "/auth/logout",

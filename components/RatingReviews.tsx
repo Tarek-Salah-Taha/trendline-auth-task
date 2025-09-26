@@ -2,6 +2,7 @@
 
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function RatingReviews() {
   const reviews = [
@@ -44,20 +45,19 @@ export function RatingReviews() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-2xl font-bold text-[#333333] mb-8">
+    <section className="max-w-7xl mx-auto px-4 pb-12">
+      <h5 className="relative inline-block md:text-2xl text-lg font-bold text-black mb-8">
         Rating & Reviews
-      </h2>
+        <span className="absolute left-0 -bottom-1 h-1 w-12 bg-chart-2 rounded"></span>
+      </h5>
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-start gap-16">
         {/* Left: Average rating + breakdown */}
-        <div className="flex flex-col md:flex-row md:items-center gap-6 flex-1">
+        <div className="flex flex-col md:flex-row md:items-start gap-12 flex-1">
           {/* Average rating */}
-          <div className="flex items-center gap-2 justify-center md:justify-start">
-            <div className="text-7xl md:text-6xl font-bold text-[#333333]">
-              4,5
-            </div>
-            <div className="text-[#8a8a8a] text-xl md:text-lg">/5</div>
+          <div className="flex items-end gap-2 justify-center md:justify-start">
+            <div className="text-9xl font-medium text-black">4,5</div>
+            <div className="text-2xl font-medium text-[#B0B0B0] mb-2">/5</div>
           </div>
 
           {/* Rating Breakdown */}
@@ -65,19 +65,24 @@ export function RatingReviews() {
             {ratingBreakdown.map((item) => (
               <div key={item.stars} className="flex items-center gap-3">
                 {/* Stars number on left */}
-                <span className="text-sm text-[#333333] w-5">{item.stars}</span>
+                <div className="flex items-center gap-1 w-10">
+                  <Star className="h-5 w-5 fill-chart-2 text-chart-2 stroke-none" />
+                  <span className="text-xl font-medium text-[#545454]">
+                    {item.stars}
+                  </span>
+                </div>
 
                 {/* Progress bar */}
-                <div className="bg-[#e6e6e6] rounded-full h-2 w-32 md:w-full">
+                <div className="bg-[#e6e6e6] rounded-full h-2 w-full md:w-120">
                   <div
-                    className="bg-[#e2b78c] h-2 rounded-full"
+                    className="bg-chart-2 h-2 rounded-full"
                     style={{ width: `${item.percentage}%` }}
                   />
                 </div>
 
                 {/* Percentage on right */}
-                <span className="text-sm text-[#8a8a8a] w-8 text-right">
-                  {`${item.percentage}%`}
+                <span className="text-xl text-[#545454] w-8 text-right font-medium">
+                  {`%${item.percentage}`}
                 </span>
               </div>
             ))}
@@ -85,11 +90,19 @@ export function RatingReviews() {
         </div>
 
         {/* Right: Total Reviews */}
-        <div className="flex flex-col items-center md:items-center gap-2 flex-shrink-0">
-          <div className="text-[#8a8a8a]">Total Reviews</div>
-          <div className="text-4xl font-bold text-[#333333]">3.0K</div>
-          <Button className="bg-[#be968e] hover:bg-[#a08268] text-white mt-2">
+        <div className="flex flex-col items-center gap-2 flex-shrink-0">
+          <div className="text-muted-foreground text-base">Total Reviews</div>
+          <div className="md:text-6xl text-5xl font-semibold text-foreground">
+            3.0K
+          </div>
+          <Button className="w-full min-w-[160px] max-w-[250px] bg-[#be968e] hover:bg-[#a08268] text-white px-4 py-2 rounded-lg h-14 flex items-center justify-center gap-2">
             Add Comment
+            <Image
+              src="/comment.svg"
+              alt="Comment icon"
+              width={22}
+              height={22}
+            />
           </Button>
         </div>
       </div>
@@ -100,29 +113,38 @@ export function RatingReviews() {
           <div key={index} className="border-b border-[#e6e6e6] pb-6">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
-                <h4 className="font-semibold text-[#333333]">{review.name}</h4>
+                <h4 className="font-bold md:text-xl text-base text-black">
+                  {review.name}
+                </h4>
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={`h-4 w-4 ${
                         i < review.rating
-                          ? "fill-[#e2b78c] text-[#e2b78c]"
+                          ? "fill-chart-2 text-chart-2"
                           : "text-[#e6e6e6]"
                       }`}
                     />
                   ))}
                 </div>
               </div>
-              <span className="text-sm text-[#8a8a8a]">{review.time}</span>
+              <span className="md:text-base text-sm font-medium text-muted-foreground">
+                {review.time}
+              </span>
             </div>
-            <p className="text-[#8a8a8a] leading-relaxed">{review.comment}</p>
+            <p className="text-black md:text-base text-sm leading-relaxed">
+              {review.comment}
+            </p>
           </div>
         ))}
       </div>
 
       <div className="text-center mt-8">
-        <Button variant="ghost" className="text-[#be968e] hover:text-[#a08268]">
+        <Button
+          variant="ghost"
+          className="text-[#be968e] hover:text-[#a08268] bg-gray-100"
+        >
           View More Comments
         </Button>
       </div>

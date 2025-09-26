@@ -5,10 +5,10 @@ import Link from "next/link";
 // Navigation data
 const navigationItems = [
   { text: "Home", iconSrc: "/header/home.svg", href: "/" },
-  { text: "Our Category", iconSrc: "/header/category.svg", href: "/category" },
-  { text: "About Us", iconSrc: "/header/about.svg", href: "/about" },
-  { text: "Contact Us", iconSrc: "/header/contact.svg", href: "/contact" },
-  { text: "FAQs", iconSrc: "/header/FAQs.svg", href: "/faqs" },
+  { text: "Our Category", iconSrc: "/header/category.svg", href: "/" },
+  { text: "About Us", iconSrc: "/header/about.svg", href: "/" },
+  { text: "Contact Us", iconSrc: "/header/contact.svg", href: "/" },
+  { text: "FAQs", iconSrc: "/header/FAQs.svg", href: "/" },
 ];
 
 // Right side icons data
@@ -16,29 +16,29 @@ const rightIcons = [
   {
     type: "icon",
     iconSrc: "/header/shopping bag.svg",
-    href: "/shopping",
+    href: "/",
     label: "Shopping & Notifications",
   },
   {
     type: "icon",
     iconSrc: "/header/love.svg",
     text: "Favorites",
-    href: "/favorites",
+    href: "/",
     label: "Favorites",
   },
   {
     type: "textIcon",
     iconSrc: "/header/down arrow.svg",
     text: "EN",
-    href: "/language",
+    href: "/",
     label: "EN",
   },
   {
     type: "doubleIcon",
     iconSrc1: "/header/user.svg",
     iconSrc2: "/header/down arrow.svg",
-    href: "/profile",
-    label: "Profile",
+    href: "/register",
+    label: "Register",
   },
 ];
 
@@ -52,7 +52,7 @@ const NavLink = ({
   text: string;
   iconSrc: string;
 }) => (
-  <Link href={href} className="nav-link flex items-center gap-2">
+  <Link href={href} className="flex items-center gap-2 text-muted-foreground">
     <Image src={iconSrc} alt={`${text} icon`} width={18} height={18} />
     <span>{text}</span>
   </Link>
@@ -80,7 +80,7 @@ const IconButton = ({
         <Image src="/header/menu.svg" alt="Menu" width={24} height={24} />
       </Button>
     );
-    return <Link href="/menu">{content}</Link>;
+    return <Link href="/">{content}</Link>;
   }
 
   // Handle different icon types
@@ -94,7 +94,7 @@ const IconButton = ({
     content = (
       <Button
         variant="ghost"
-        className={`${buttonClasses} flex items-center gap-1 px-3`}
+        className={`${buttonClasses} flex items-center gap-1 px-2`}
       >
         <Image src={item.iconSrc1} alt={item.label} width={24} height={24} />
         <Image src={item.iconSrc2} alt={item.label} width={24} height={24} />
@@ -104,9 +104,9 @@ const IconButton = ({
     content = (
       <Button
         variant="ghost"
-        className={`${buttonClasses} flex items-center gap-1 px-3`}
+        className={`${buttonClasses} flex items-center gap-1 px-2`}
       >
-        <span className="text-sm">{item.text}</span>
+        <span className="text-sm font-medium text-black">{item.text}</span>
         <Image src={item.iconSrc} alt={item.label} width={24} height={24} />
       </Button>
     );

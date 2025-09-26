@@ -19,20 +19,23 @@ export function ProductGallery() {
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative bg-[#f5f5f5] rounded-lg overflow-hidden">
+      <div className="relative bg-[#f5f5f5] rounded-lg overflow-hidden shadow-lg">
+        {/* Grey shadow overlay at the top */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/30 to-transparent z-10" />
+
         <img
-          src={images[currentImage] || "/placeholder.svg"}
+          src={images[currentImage]}
           alt="Product image"
-          className="w-full h-[420px] object-cover"
+          className="w-full h-[450px] object-cover"
         />
 
         {/* Modern slider bars (top, full width) */}
-        <div className="absolute top-2 left-0 right-0 flex justify-between px-2">
+        <div className="absolute top-2 left-0 right-0 flex justify-between px-2 z-20">
           {images.map((_, index) => (
             <div
               key={index}
               className={`h-1 flex-1 mx-1 rounded-full transition-colors duration-300 ${
-                index === currentImage ? "bg-[#05613a]" : "bg-white/50"
+                index === currentImage ? "bg-white" : "bg-black/30"
               }`}
             />
           ))}
@@ -42,7 +45,7 @@ export function ProductGallery() {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#BE968E]/80 hover:bg-[#BE968E]/100 rounded-full"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#BE968E]/80 hover:bg-[#BE968E]/100 rounded-full z-20"
           onClick={() =>
             setCurrentImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))
           }
@@ -52,7 +55,7 @@ export function ProductGallery() {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#BE968E]/80 hover:bg-[#BE968E]/100 rounded-full"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#BE968E]/80 hover:bg-[#BE968E]/100 rounded-full z-20"
           onClick={() =>
             setCurrentImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))
           }
@@ -71,16 +74,16 @@ export function ProductGallery() {
               onClick={() =>
                 setCurrentImage(images.findIndex((img) => img === image))
               }
-              className="relative flex-1 h-38 rounded-lg overflow-hidden border-2 border-[#e6e6e6] hover:border-[#05613a]"
+              className="relative flex-1 h-40 rounded-lg overflow-hidden border-2 border-[#e6e6e6] hover:border-black"
             >
               <img
-                src={image || "/placeholder.svg"}
+                src={image}
                 alt="Product thumbnail"
                 className="w-full h-full object-cover"
               />
               {isLast && (
                 <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                  <span className="text-white font-semibold">+2</span>
+                  <span className="text-white font-semibold text-3xl">+2</span>
                 </div>
               )}
             </button>

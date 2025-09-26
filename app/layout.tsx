@@ -7,7 +7,7 @@ import "./globals.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${poppins.variable}`}>
-        <Suspense fallback={null}>{children}</Suspense>
+        {children}
         <Analytics />
       </body>
     </html>

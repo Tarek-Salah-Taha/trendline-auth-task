@@ -117,7 +117,7 @@ const IconButton = ({
 
 export function Header() {
   return (
-    <header className="bg-background border-b border-border px-4 py-3">
+    <header className="bg-background border-b border-border px-2 py-4 min-h-[90px]">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Left: Logo + Navigation */}
         <div className="flex items-center gap-8">

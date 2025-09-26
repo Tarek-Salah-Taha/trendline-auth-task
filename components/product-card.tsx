@@ -1,6 +1,7 @@
 "use client";
 
-import { Heart, Lock, Star } from "lucide-react";
+import { useState } from "react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/app/_lib/utils";
 import Image from "next/image";
@@ -34,6 +35,9 @@ export function ProductCard({
   additionalColorsCount = 0,
   className,
 }: ProductCardProps) {
+  const [bagActive, setBagActive] = useState(false);
+  const [favActive, setFavActive] = useState(false);
+
   const getColorStyle = (color: string) => {
     const colorMap: Record<string, string> = {
       beige: "#be968e",
@@ -55,21 +59,30 @@ export function ProductCard({
 
         {/* Action Icons */}
         <div className="absolute top-3 right-3 flex gap-2">
+          {/* Bag button */}
           <Button
             variant="ghost"
             size="icon"
-            className="w-8 h-8 bg-white/90 hover:bg-white rounded-md shadow-sm"
-          >
-            <Image src="/bag-add.svg" alt="Add to bag" width={20} height={20} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
+            onClick={() => setBagActive(!bagActive)}
             className="w-8 h-8 bg-white/90 hover:bg-white rounded-md shadow-sm"
           >
             <Image
-              src="/favourite.svg"
+              src={bagActive ? "/bag-add active.svg" : "/bag-add.svg"}
+              alt="Add to bag"
+              width={20}
+              height={20}
+            />
+          </Button>
+
+          {/* Favourite button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setFavActive(!favActive)}
+            className="w-8 h-8 bg-white/90 hover:bg-white rounded-md shadow-sm"
+          >
+            <Image
+              src={favActive ? "/favourite active.svg" : "/favourite.svg"}
               alt="Add to favourites"
               width={24}
               height={24}
@@ -97,11 +110,7 @@ export function ProductCard({
             {category}
           </span>
           <div className="flex items-center gap-1">
-            <div className="flex">
-              <span className="text-sm text-[#be968e]">
-                <Star className="h-4 w-4 fill-chart-2 text-chart-2 stroke-none" />
-              </span>
-            </div>
+            <Star className="h-4 w-4 fill-chart-2 text-chart-2 stroke-none" />
             <span className="text-sm font-medium text-black">{rating}</span>
             <span className="text-xs text-muted-foreground">
               ({reviewCount})
@@ -114,7 +123,7 @@ export function ProductCard({
           {name}
         </h3>
 
-        {/* Price + Color Options in one line */}
+        {/* Price + Color Options */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           {/* Price */}
           <div className="flex items-center gap-2">

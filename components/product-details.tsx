@@ -117,10 +117,10 @@ export function ProductDetails() {
 
         {/* Colors */}
         <div>
-          <label className="block md:text-xl text-base font-medium text-black mb-2">
+          <label className="block md:text-xl text-base font-medium text-black mb-3">
             Colors
           </label>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-start">
             {colors.map((color) => (
               <div key={color.name} className="flex flex-col items-center">
                 {/* All circles have same outer size */}
@@ -189,7 +189,7 @@ export function ProductDetails() {
           </div>
 
           {/* Add to Cart button */}
-          <Button className="w-full md:w-1/2 lg:w-1/3 bg-[#be968e] hover:bg-[#a08268] text-white py-6 rounded-lg h-14 flex items-center justify-center gap-2 font-medium text-base">
+          <Button className="w-full md:w-1/2 lg:w-2/5 bg-[#be968e] hover:bg-[#a08268] text-white py-3 rounded-lg h-14 flex items-center justify-center gap-2 font-medium text-base">
             Add To Cart{" "}
             <Image
               src="/shopping-bag.svg"

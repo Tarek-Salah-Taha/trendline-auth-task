@@ -2,7 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { Suspense } from "react";
 import "./globals.css";
 
 const poppins = Poppins({

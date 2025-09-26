@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/product-card";
 
 export function SimilarItems() {
   const [currentSlide, setCurrentSlide] = useState(0);
